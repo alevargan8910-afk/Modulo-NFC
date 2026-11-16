@@ -1,0 +1,198 @@
+/* ==========================================================================
+   STEEP DESIGN SYSTEM — TOKENS & VARIABLES
+   ========================================================================== */
+:root {
+  /* Colors */
+  --color-ink-black: #17191c;
+  --color-paper-white: #ffffff;
+  --color-mist-gray: #f2f2f3;
+  --color-fog-white: #fafafb;
+  --color-slate-gray: #777b86;
+  --color-ash-gray: #979799;
+  --color-smoke-gray: #a3a6af;
+  --color-blush-peach: #fbe1d1;
+  --color-sienna-brown: #5d2a1a;
+  --color-border-hairline: #ececec;
+
+  /* Typography — Font Families */
+  --font-signifier: 'Source Serif 4', ui-serif, Georgia, serif;
+  --font-sohne: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Typography — Scale */
+  --text-caption: 14px;
+  --text-body: 16px;
+  --text-body-lg: 18px;
+  --text-subheading: 22px;
+  --text-heading-sm: 26px;
+  --text-heading: 44px;
+  --text-heading-lg: 64px;
+  --text-display: 76px;
+
+  /* Spacing (Base 4px) */
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-80: 80px;
+
+  /* Layout */
+  --page-max-width: 1200px;
+
+  /* Border Radius */
+  --radius-images: 12px;
+  --radius-inputs: 16px;
+  --radius-elevated: 20px;
+  --radius-cards: 24px;
+  --radius-pill: 9999px;
+
+  /* Elevation / Shadows */
+  --shadow-artifact: 0 0 0 1px rgba(4, 23, 43, 0.05), 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
+  --shadow-modal: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 8px 40px 0 rgba(0, 0, 0, 0.12);
+}
+
+/* ==========================================================================
+   RESET & BASE
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-paper-white);
+  color: var(--color-ink-black);
+  font-family: var(--font-sohne);
+  font-size: var(--text-body);
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-24);
+}
+
+/* ==========================================================================
+   NAVIGATION BAR (Transparente, sin borde ni sombra)
+   ========================================================================== */
+.navbar {
+  padding: var(--spacing-24) 0;
+  background: transparent;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: var(--font-sohne);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-ink-black);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--spacing-32);
+}
+
+.nav-link {
+  color: var(--color-ink-black);
+  text-decoration: none;
+  font-size: var(--text-body);
+  font-weight: 400;
+  padding: 2px 0;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ==========================================================================
+   BUTTONS & LINKS (Pill Geometry: 9999px)
+   ========================================================================== */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  padding: 10px 22px;
+  font-family: var(--font-sohne);
+  font-size: var(--text-body);
+  font-weight: 400;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+  text-decoration: none;
+}
+
+.btn-pill:active {
+  transform: scale(0.98);
+}
+
+.btn-filled {
+  background-color: var(--color-ink-black);
+  color: var(--color-paper-white);
+  border: 1px solid var(--color-ink-black);
+}
+
+.btn-filled:hover {
+  opacity: 0.9;
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--color-ink-black);
+  border: 1px solid var(--color-ink-black);
+}
+
+.btn-ghost:hover {
+  background-color: var(--color-fog-white);
+}
+
+.text-link-arrow {
+  display: inline-block;
+  color: var(--color-ink-black);
+  font-size: var(--text-body);
+  font-weight: 400;
+  text-decoration: none;
+  padding: var(--spacing-16) 0 0;
+}
+
+.text-link-arrow:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.tag-label {
+  display: inline-block;
+  font-size: var(--text-caption);
+  font-weight: 400;
+  color: var(--color-ash-gray);
+  margin-bottom: var(--spacing-8);
+}
+
+/* ==========================================================================
+   HERO SECTION & FLOATING PRODUCT ARTIFACTS
+   ========================================================================== */
+.hero-section {
+  padding: var(--spacing-40) 0 var(--spacing-80);
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: var(--spacing-40);
+  align-items: center;
+}

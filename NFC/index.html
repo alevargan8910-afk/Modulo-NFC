@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Steep NFC — Gestión Dinámica & Fidelización</title>
+  <!-- Fuentes editoriales sustitutas según STEEP.md: Source Serif 4 (Signifier) e Inter (Söhne) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navegación Superior -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="logo">steep.nfc</a>
+      <nav class="nav-links">
+        <a href="#tarjetas" class="nav-link">Tarjetas NFC</a>
+        <a href="#fidelizacion" class="nav-link">Fidelización</a>
+        <a href="#notificaciones" class="nav-link">Retención</a>
+        <a href="#accesos" class="nav-link">Accesos</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="btn-new-tag" class="btn-pill btn-filled">Nueva Etiqueta</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Editorial con Artefactos Flotantes -->
+    <section class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-text">
+          <span class="tag-label">Arquitectura NFC Dinámica</span>
+          <h1 class="display-title">
+            Control físico, <em>redirección</em> instantánea.
+          </h1>
+          <p class="hero-subtitle">
+            Gestiona enlaces dinámicos, tarjetas de fidelización digitales y campañas de retención sin regrabar tus chips NTAG.
+          </p>
+          <div class="hero-cta-group">
+            <button id="btn-hero-create" class="btn-pill btn-filled">Configurar Tarjeta</button>
+            <button id="btn-simulate-scan" class="btn-pill btn-ghost">Simular Escaneo NFC</button>
+          </div>
+        </div>
+
+        <!-- Artefactos Flotantes (Floating Product Artifacts) -->
+        <div class="artifacts-grid">
+          <!-- Artefacto 1: Métrica de Escaneos -->
+          <div class="floating-artifact stat-card">
+            <div class="stat-header">
+              <span class="tag-label">Escaneos Activos</span>
+              <div class="avatar-bubble">
+                <span>JV</span>
+                <svg class="cursor-pointer" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M1 1L5.5 12L7.5 7.5L12 5.5L1 1Z" fill="#17191c"/>
+                </svg>
+              </div>
+            </div>
+            <div class="stat-value" id="total-scans">2,418</div>
+            <div class="stat-delta">↑ 5.5x vs semana pasada</div>
+            <!-- Gráfico gestural minimalista en Sienna Brown (#5d2a1a) -->
+            <svg class="sparkline" viewBox="0 0 200 48" fill="none">
+              <path d="M2 42 C 35 38, 60 22, 95 26 C 130 30, 160 8, 198 4" stroke="#5d2a1a" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <!-- Artefacto 2: Compositor Rápido (AI / URL Composer) -->
+          <div class="floating-artifact composer-card">
+            <span class="tag-label">Redirección Rápida</span>
+            <form id="quick-redirect-form" class="composer-input-wrapper">
+              <input type="text" id="quick-url-input" placeholder="Pega nuevo destino (ej. instagram.com/tu_cuenta)..." required>
+              <button type="submit" class="btn-circle-send" title="Actualizar Destino">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </form>
+            <p class="caption-text" id="quick-status">Selecciona una tarjeta abajo para aplicar el cambio sin re-escanear.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 1: Gestión de Tarjetas NFC por Grupos (Fondo Alternating Fog White) -->
+    <section id="tarjetas" class="section-fog">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="tag-label">Inventario de Hardware</span>
+            <h2 class="section-title">Tarjetas & Grupos</h2>
+          </div>
+          <!-- Filtros por Grupo -->
+          <div class="filter-pills" id="group-filters">
+            <button class="btn-pill btn-filled filter-btn active" data-group="all">Todas</button>
+            <button class="btn-pill btn-ghost filter-btn" data-group="marketing">Marketing & Menú</button>
+            <button class="btn-pill btn-ghost filter-btn" data-group="fidelizacion">Fidelización</button>
+            <button class="btn-pill btn-ghost filter-btn" data-group="accesos">Accesos & Wi-Fi</button>
+          </div>
+        </div>
+
+        <!-- Contenedor de Tarjetas Renderizadas por JS -->
+        <div class="cards-grid" id="nfc-cards-container">
+          <!-- Se llena dinámicamente desde app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 2: Fidelización Digital & Retención (Fondo Paper White + Accent Peach Card) -->
+    <section id="fidelizacion" class="section-white">
+      <div class="container">
+        <div class="editorial-split">
+          <!-- Tarjeta Editorial Peach (Única por página según STEEP.md) -->
+          <div class="accent-peach-card">
+            <span class="peach-tag">Fidelización & Retención Automática</span>
+            <h3 class="peach-title">Convierte cada toque en visitas recurrentes.</h3>
+            <p class="peach-body">
+              “Cuando un cliente acumula 4 sellos o lleva 20 días sin visitar el local, el motor dispara una notificación Web Push o WhatsApp de forma automática.”
+            </p>
+            <div class="peach-metrics">
+              <div>
+                <strong>+46.2%</strong>
+                <span>Tasa de retorno</span>
+              </div>
+              <div>
+                <strong>Apple / Google</strong>
+                <span>Wallet integrado</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Simulador de Clientes & Notificaciones -->
+          <div class="neutral-card retention-panel" id="notificaciones">
+            <div class="panel-top">
+              <span class="tag-label">Motor de Disparadores (Cron Jobs)</span>
+              <h3 class="panel-title">Clientes & Recordatorios</h3>
+            </div>
+            <div class="customer-list" id="customer-list">
+              <!-- Se llena dinámicamente desde app.js -->
+            </div>
+            <a href="#simulador" id="trigger-retention-btn" class="text-link-arrow">Ejecutar campaña de inactividad →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal para Crear / Editar Tarjeta NFC -->
+  <div id="card-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Configurar Etiqueta NFC</h3>
+        <button id="close-modal" class="btn-close">✕</button>
+      </div>
+      <form id="nfc-form" class="modal-form">
+        <input type="hidden" id="edit-card-id">
+        
+        <div class="form-group">
+          <label for="card-name">Nombre / Ubicación física</label>
+          <input type="text" id="card-name" placeholder="Ej. Mesa 04 - Posavasos" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="card-group">Grupo / Servicio</label>
+            <select id="card-group" required>
+              <option value="marketing">Marketing & Menú</option>
+              <option value="fidelizacion">Tarjeta de Fidelización</option>
+              <option value="accesos">Control de Accesos / Wi-Fi</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="card-uid">UID del Chip NTAG</label>
+            <input type="text" id="card-uid" placeholder="04:A2:8F:1C" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="card-url">URL de Destino Dinámica</label>
+          <input type="url" id="card-url" placeholder="https://instagram.com/tu_negocio" required>
+        </div>
+
+        <div class="form-group">
+          <label for="card-password">Contraseña Hardware (NTAG PWD - 4 caracteres)</label>
+          <input type="password" id="card-password" maxlength="4" placeholder="••••" required>
+          <span class="caption-text">Protege la memoria física contra escritura no autorizada (AUTH0).</span>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" id="cancel-modal" class="btn-pill btn-ghost">Cancelar</button>
+          <button type="submit" class="btn-pill btn-filled">Guardar Cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast de Notificación -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
